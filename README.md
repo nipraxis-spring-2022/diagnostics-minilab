@@ -2,6 +2,10 @@
 We are adding stuff to the README
 I never write great READMEs
 
+#### ReadMe Practice
+I made these changes
+
+
 # Diagnostics project
 
 Scripts go in the `scripts` directory.
