@@ -18,7 +18,7 @@ MY_DIR = op.dirname(__file__)
 # directory to the Python path.
 # Hint: sys.path
 # Hint: see the solutions if you are stuck.
-# +++your code here+++
+sys.path.append('findoutlie')
 
 import numpy as np
 

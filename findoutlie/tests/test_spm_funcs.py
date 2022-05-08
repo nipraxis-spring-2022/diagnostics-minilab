@@ -19,7 +19,7 @@ EXAMPLE_FILENAME = 'ds107_sub012_t1r2_small.nii'
 # directory to the Python path.
 # Hint: sys.path
 # Hint: see the solutions if you are stuck.
-# +++your code here+++
+sys.path.append('findoutlie')
 
 import numpy as np
 
