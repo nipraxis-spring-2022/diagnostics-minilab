@@ -10,9 +10,7 @@ other on normally distributed values etc.  The routines should check that their
 requirements are met and raise an error otherwise.
 """
 
-# Any imports you need
-# +++your code here+++
-
+import numpy as np
 
 def iqr_detector(measures, iqr_proportion=1.5):
     """ Detect outliers in `measures` using interquartile range.
@@ -50,4 +48,22 @@ def iqr_detector(measures, iqr_proportion=1.5):
     # * investigate np.percentile
     # * You'll likely need np.logical_or
     # https://textbook.nipraxis.org/numpy_logical.html
-    # +++your code here+++
+    
+    # Obtains Q1, Q2, Q3
+    Q1 = np.percentile(measures, 25)
+    Q2 = np.percentile(measures, 50)
+    Q3 = np.percentile(measures, 75)
+    
+    # Calc IQR
+    IQR = Q3 - Q1
+    
+    # Calc bool array of upper/lower outliers
+    lower_outliers = measures < (Q1 - IQR * iqr_proportion)
+    upper_outliers = measures > (Q3 + IQR * iqr_proportion)
+
+    outlier_tf = np.logical_or(lower_outliers,upper_outliers)
+    
+    return outlier_tf
+
+
+
