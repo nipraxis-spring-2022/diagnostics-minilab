@@ -23,9 +23,11 @@ def file_hash(filename):
     hash : str
         SHA1 hexadecimal hash string for contents of `filename`.
     """
-    # Open the file, read contents as bytes.
-    # Calculate, return SHA1 has on the bytes from the file.
-    raise NotImplementedError('This is just a template -- you are expected to code this.')
+    fobj = open(filename, 'rb')  # 'rb' means Read Bytes.
+    byte_contents = fobj.read()
+    fobj.close()
+    hash = hashlib.sha1(byte_contents).hexdigest()
+    return hash
 
 
 def validate_data(data_directory):
@@ -42,19 +44,22 @@ def validate_data(data_directory):
     Returns
     -------
     None
-
     Raises
     ------
     ValueError:
         If hash value for any file is different from hash value recorded in
         ``hash_list.txt`` file.
     """
-    # Read lines from ``hash_list.txt`` file.
-    # Split into SHA1 hash and filename
-    # Calculate actual hash for given filename.
-    # If hash for filename is not the same as the one in the file, raise
-    # ValueError
-    raise NotImplementedError('This is just a template -- you are expected to code this.')
+    hash_list = os.path.join(data_directory, 'group-00', 'hash_list.txt')
+    with open(hash_list, "r") as fobj:
+        hash_lines = fobj.readlines()
+    
+    for line in hash_lines:
+        hash, file_path = line.split(' ')
+        file_path = os.path.join(data_directory, file_path)
+        if '\n' in file_path:
+            file_path = file_path.replace('\n', '')
+        assert hash == file_hash(file_path)
 
 
 def main():
