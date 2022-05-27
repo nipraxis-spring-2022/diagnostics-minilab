@@ -1,10 +1,5 @@
-## Section added by SJ
-We are adding stuff to the README
-I never write great READMEs
-
-#### ReadMe Practice by Patrick
-I made these changes
-
+# Code plan
+Each person writes code and we merge it later
 
 # Diagnostics project
 
