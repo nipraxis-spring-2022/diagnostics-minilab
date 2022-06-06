@@ -65,5 +65,14 @@ def iqr_detector(measures, iqr_proportion=1.5):
     
     return outlier_tf
 
-
+def std_detector(measures, n_stds=2):
+    """
+    Reimplementation of global signal thresholder from 
+    https://textbook.nipraxis.org/on_modules.html
+    """
+    overall_mean = np.mean(measures)
+    overall_std = np.std(measures)
+    thresh = overall_std * n_stds
+    is_outlier = np.abs(measures - overall_mean) > thresh
+    return is_outlier
 
