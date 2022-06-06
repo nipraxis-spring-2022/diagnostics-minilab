@@ -97,7 +97,10 @@ def detect_outliers(fname, metric='vol_means', detector='std',
                 outlier_mask = np.append(True, outlier_mask) # pass dvars mask with a True
             master_mask = mask_join(master_mask, outlier_mask)
 
-    return np.where(master_mask)[0] # return True value indices
+    if len(master_mask) == 0:
+        return [None]
+    else:
+        return np.where(master_mask)[0] # return True value indices
 
 
 def find_outliers(data_directory, metric='vol_means', detector='std',
