@@ -1,6 +1,3 @@
-# Code plan
-Each person writes code and we merge it later
-
 # Diagnostics project
 
 Scripts go in the `scripts` directory.
